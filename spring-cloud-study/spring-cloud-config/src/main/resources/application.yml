@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: nacos-provider-config
+  security:
+    basic:
+      #此命令无效
+      enabled: false
+    user:
+      name: yzf
+      password: 123123
+  cloud:
+    nacos:
+      discovery:
+        # 配置 nacos 地址
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        # 设置配置文件前缀，默认为 ${spring.application.name}
+        prefix: ${spring.application.name}
+        # namespace:
+        group: MY_GROUP
+        file-extension: yaml
+        extension-configs[0]:
+          data-id: test-0-dev.yml
+        extension-configs[1]:
+          data-id: test-1-dev.yml
+        extension-configs[2]:
+          data-id: test-2-dev.yml
+          group: DEFAULT_GROUP
+          refresh: true
+
+  profiles:
+    active: test
+
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://192.168.1.11:9411/
+    # http://localhost:9411/
+#    base-url: http://cloud-zipkin-server/
+#    discovery-client-enabled: false
+config:
+  info: ${spring.application.name}-${server.port}-${spring.profiles.active}
+  test-0: test-0
+  test-1: test-1
+  test-2: test-2

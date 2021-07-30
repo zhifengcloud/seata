@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cloud-nacos-conumser
+  cloud:
+    nacos:
+      discovery:
+        # 配置 nacos 地址
+        server-addr: 127.0.0.1:8848
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://192.168.1.11:9411/
+    # http://localhost:9411/
+#    base-url: http://cloud-zipkin-server/
+#    discovery-client-enabled: false
+#feign:
+#  # Okhttp参数配置
+#  httpclient:
+#    enabled: false
+#  okhttp:
+#    enabled: true
+#    max-connections: 200 # 默认值
+#    max-connections-per-route: 50 # 默认值

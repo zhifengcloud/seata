@@ -1,0 +1,38 @@
+server:
+  port: 9411
+
+spring:
+  application:
+    name: cloud-zipkin-server
+  #zipkin数据保存到数据库中需要进行如下配置
+  #表示当前程序不使用sleuth
+  sleuth:
+    enabled: false
+  #表示zipkin数据存储方式是mysql
+  zipkin:
+    storage:
+      type: mysql
+  #数据库脚本创建地址，当有多个时可使用[x]表示集合第几个元素，脚本可到官网下载，需要先手动到数据库执行
+  datasource:
+    schema[0]: classpath:/static/zipkin_mysql.sql
+    #spring boot数据源配置
+    url: jdbc:mysql://localhost:3306/zipkin?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 123123
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    continue-on-error: true
+  #main:
+    # 让应用以非web服务方式启动 server.port配置将会失效
+  #  web-application-type: none
+  cloud:
+    nacos:
+      discovery:
+        # 配置 nacos 地址
+        server-addr: 127.0.0.1:8848
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
