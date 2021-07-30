@@ -1,0 +1,42 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: spring-cloud-seata-storage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alibaba:
+      seata:
+        tx-service-group: storage-service-seata
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_storage?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123123
+
+#seata:
+#  enabled: true
+#  application-id: storage-service-seata
+#  tx-service-group: storage-service-seata
+#  enable-auto-data-source-proxy: true
+#  data-source-proxy-mode: AT
+#  use-jdk-proxy: false
+#  registry:
+#    type: nacos
+#    load-balance: RandomLoadBalance
+#    load-balance-virtual-nodes: 10
+#    nacos:
+#      application: seata-server
+#      server-addr: 127.0.0.1:8848
+#      group: "SEATA_GROUP"
+#  config:
+#    type: nacos
+#    nacos:
+#      namespace:
+#      serverAddr: 127.0.0.1:8848
+#      group: SEATA_GROUP
+
+
