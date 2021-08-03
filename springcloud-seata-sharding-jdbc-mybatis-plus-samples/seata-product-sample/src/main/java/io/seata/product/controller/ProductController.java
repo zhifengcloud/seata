@@ -25,5 +25,8 @@ public class ProductController {
         return productService.getByProductId(productId);
     }
 
-
+    @GetMapping("/product/test")
+    public String test(){
+        return "hello-product";
+    }
 }

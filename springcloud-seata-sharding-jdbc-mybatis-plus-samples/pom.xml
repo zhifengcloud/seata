@@ -10,6 +10,7 @@
     <modules>
         <module>seata-order-sample</module>
         <module>seata-product-sample</module>
+      <module>seata-gateway</module>
     </modules>
     <groupId>io.seata</groupId>
     <version>1.1.0</version>

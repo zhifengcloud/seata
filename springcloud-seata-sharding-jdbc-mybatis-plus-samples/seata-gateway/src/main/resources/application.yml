@@ -1,0 +1,52 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: spring-cloud-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#        group: DEFAULT_GROUP
+#        namespace:
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          lower-case-service-id: false
+      routes:
+        # Add your routes here.
+        - id: product_service
+          uri: lb://product-server
+          predicates:
+            - Path=/product/**
+        - id: order_service
+          uri: lb://order-server
+          predicates:
+            - Path=/order/**
+
+
+        - id: aliyun_route
+          uri: https://www.aliyun.com/
+          predicates:
+            - Path=/yun/**
+        - id: httpbin_route
+          uri: https://httpbin.org
+          predicates:
+            - Path=/httpbin/**
+          filters:
+            - RewritePath=/httpbin/(?<segment>.*), /$\{segment}
+        -id: query-gateway
+          uri: https://www.baidu.com
+          order: 0
+          predicates:
+            -Query=smile
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

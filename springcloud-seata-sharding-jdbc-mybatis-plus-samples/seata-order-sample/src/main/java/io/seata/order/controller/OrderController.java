@@ -19,22 +19,20 @@ public class OrderController {
     @Autowired
     private ProductClient productClient;
 
-    @PutMapping("/product/{productId}")
+    @PutMapping("/order/{productId}")
     public Boolean seataDemo(@PathVariable(value = "productId") long productId, int num,
                              @RequestParam(required = false, defaultValue = "false") Boolean hasError) {
         boolean result = orderService.seataDemo(productId, num, hasError);
-//        boolean result =hasError;
         return result;
-
     }
 
-    @GetMapping("/product/{productId}")
+    @GetMapping("/order/{productId}")
     public ProductVo getProduct(@PathVariable(value = "productId") int productId) {
         return productClient.getById(productId);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/order/test")
     public String test() {
-        return "hello sharding-seata";
+        return "hello order-sharding-seata";
     }
 }
