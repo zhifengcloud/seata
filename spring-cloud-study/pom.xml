@@ -13,6 +13,7 @@
     <module>zipkin-server</module>
     <module>spring-cloud-sentinel-sample</module>
     <module>spring-cloud-sentinel-sample2</module>
+    <module>cloud-zookeeper</module>
   </modules>
 
   <parent>
@@ -58,11 +59,11 @@
     <!--			<groupId>org.springframework.cloud</groupId>-->
     <!--			<artifactId>spring-cloud-starter</artifactId>-->
     <!--		</dependency>-->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-      <version>${spring-cloud.alibaba.version}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+<!--      <version>${spring-cloud.alibaba.version}</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>

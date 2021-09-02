@@ -14,16 +14,16 @@ spring:
         dashboard: localhost:7777
 #        client-ip: 127.0.0.1 #本机的访问ip
 #        port: 8719 #与sentinel交互心跳信息的端口(docker部署项目一点要开启这个端口,每个项目都不一
-    datasource:
-    # 名称随意，这些是dashboard做持久化后添加规则，会在nacos的配置文件中生成该配置(没用可不添加)
-       flow:
-        - nacos:
-          server-addr: ${spring.cloud.nacos.discovery.server-addr}
-#          server-addr: 127.0.0.1:8848
-          data-id: ${spring.application.name}-sentinel-flow
-          group-id: DEFAULT_GROUP
-          data-type: json
-          rule-type: flow
+#    datasource:
+#    # 名称随意，这些是dashboard做持久化后添加规则，会在nacos的配置文件中生成该配置(没用可不添加)
+#       flow:
+#        - nacos:
+#          server-addr: ${spring.cloud.nacos.discovery.server-addr}
+##          server-addr: 127.0.0.1:8848
+#          data-id: ${spring.application.name}-sentinel-flow
+#          group-id: DEFAULT_GROUP
+#          data-type: json
+#          rule-type: flow
 #management:
 #  endpoints:
 #    web:
