@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.0
  * @date 2019/8/28 4:05 PM
  */
-@RestController("/order")
+@RestController
 public class OrderController {
 
     @Autowired

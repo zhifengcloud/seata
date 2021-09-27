@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+
 /**
  * Program Name: springcloud-nacos-seata
  * <p>
@@ -37,11 +38,11 @@ public class OrderService {
      * @param commodityCode
      * @param count
      */
-    @GlobalTransactional
+    @GlobalTransactional(lockRetryTimes = 5, lockRetryInternal = 10)
     @Transactional(rollbackFor = Exception.class)
     public void create(String userId, String commodityCode, Integer count) {
         // 减库存
-        storageFeignClient.deduct(commodityCode,count);
+        storageFeignClient.deduct(commodityCode, count);
 
         BigDecimal orderMoney = new BigDecimal(count).multiply(new BigDecimal(5));
 

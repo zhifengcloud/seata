@@ -33,6 +33,8 @@ public class TestMain {
     private static String path = "/myWatch";
 
     private static void init() {
+
+
         zkClient =
                 CuratorFrameworkFactory.builder().
                         connectString(remoteAddress)//zkClint连接地址
@@ -53,6 +55,8 @@ public class TestMain {
     }
 
     public static void main(String[] args) throws Exception {
+
+
         TestMain testMain = new TestMain();
         init();
 
